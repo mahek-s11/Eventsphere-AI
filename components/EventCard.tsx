@@ -31,9 +31,12 @@ export default function EventCard({
           📍 Pune, India
         </p>
 
-        <button className="w-full rounded-lg bg-purple-600 py-2 font-semibold hover:bg-purple-700">
-          Book Ticket
-        </button>
+<a
+  href="/book-ticket"
+  className="block w-full rounded-lg bg-purple-600 py-2 text-center font-semibold hover:bg-purple-700"
+>
+  Book Ticket
+</a>
       </div>
     </div>
   );

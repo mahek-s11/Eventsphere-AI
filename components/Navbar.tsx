@@ -6,17 +6,26 @@ export default function Navbar() {
       </h1>
 
       <div className="flex gap-4">
-        <button className="hover:text-purple-400">
-          Events
-        </button>
+        <a
+            href="/events"
+            className="hover:text-purple-400"
+        >
+            Events
+        </a>
 
-        <button className="hover:text-purple-400">
-          About
-        </button>
+<a
+  href="/about"
+  className="hover:text-purple-400"
+>
+  About
+</a>
 
-        <button className="rounded-lg bg-purple-600 px-4 py-2 hover:bg-purple-700">
-          Login
-        </button>
+<a
+  href="/login"
+  className="rounded-lg bg-purple-600 px-4 py-2 hover:bg-purple-700"
+>
+  Login
+</a>
       </div>
     </nav>
   );
