@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import FeaturedEvents from "../components/FeaturedEvents";
+import Features from "../components/Features";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <FeaturedEvents />
+      <Features />
     </main>
   );
 }

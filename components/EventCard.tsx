@@ -10,16 +10,31 @@ export default function EventCard({
   date,
 }: EventCardProps) {
   return (
-    <div className="rounded-2xl border border-gray-800 bg-zinc-900 p-6 transition hover:border-purple-500">
-      <h3 className="mb-2 text-xl font-bold">{title}</h3>
+    <div className="overflow-hidden rounded-2xl bg-zinc-900 transition duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
 
-      <p className="mb-2 text-purple-400">
-        {category}
-      </p>
+      <div className="h-40 bg-gradient-to-r from-purple-600 to-pink-500"></div>
 
-      <p className="text-gray-400">
-        {date}
-      </p>
+      <div className="p-6">
+        <span className="rounded-full bg-purple-600 px-3 py-1 text-sm">
+          {category}
+        </span>
+
+        <h3 className="mt-4 mb-2 text-2xl font-bold">
+          {title}
+        </h3>
+
+        <p className="mb-2 text-gray-400">
+          📅 {date}
+        </p>
+
+        <p className="mb-5 text-gray-400">
+          📍 Pune, India
+        </p>
+
+        <button className="w-full rounded-lg bg-purple-600 py-2 font-semibold hover:bg-purple-700">
+          Book Ticket
+        </button>
+      </div>
     </div>
   );
 }
