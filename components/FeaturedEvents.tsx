@@ -1,4 +1,5 @@
 import EventCard from "./EventCard";
+import { events } from "../data/events";
 
 export default function FeaturedEvents() {
   return (
@@ -8,23 +9,16 @@ export default function FeaturedEvents() {
       </h2>
 
       <div className="grid gap-6 md:grid-cols-3">
-        <EventCard
-          title="AI Hackathon Pune"
-          category="Technology"
-          date="12 June 2026"
-        />
-
-        <EventCard
-          title="Startup Summit"
-          category="Business"
-          date="18 June 2026"
-        />
-
-        <EventCard
-          title="Music Fest"
-          category="Entertainment"
-          date="25 June 2026"
-        />
+        {events.map((event) => (
+          <EventCard
+            key={event.id}
+            id={event.id}
+            title={event.title}
+            category={event.category}
+            date={event.date}
+            location={event.location}
+          />
+        ))}
       </div>
     </section>
   );

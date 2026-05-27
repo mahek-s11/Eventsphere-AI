@@ -5,41 +5,50 @@ export default function Navbar() {
         EventSphere AI
       </h1>
 
-      <div className="flex gap-4">
-        <a
-            href="/events"
-            className="hover:text-purple-400"
-        >
-            Events
-        </a>
+      <div className="flex items-center gap-4">
+ <div className="flex items-center gap-4">
+  <a
+    href="/events"
+    className="hover:text-purple-400"
+  >
+    Events
+  </a>
+
+  <a
+    href="/about"
+    className="hover:text-purple-400"
+  >
+    About
+  </a>
+
+  <a
+    href="/ai-generator"
+    className="hover:text-purple-400"
+  >
+    AI Generator
+  </a>
+
+  <a
+    href="/recommendations"
+    className="hover:text-purple-400"
+  >
+    Recommendations
+  </a>
 
 <a
-  href="/about"
-  className="hover:text-purple-400"
+  href="/create-event"
+  className="rounded-lg border border-purple-500 px-4 py-2 text-purple-400 transition hover:bg-purple-500 hover:text-white"
 >
-  About
+  + Create Event
 </a>
 
-<a
-  href="/ai-generator"
-  className="hover:text-purple-400"
->
-  AI Generator
-</a>
-
-<a
-  href="/recommendations"
-  className="hover:text-purple-400"
->
-  Recommendations
-</a>
-
-<a
-  href="/login"
-  className="rounded-lg bg-purple-600 px-4 py-2 hover:bg-purple-700"
->
-  Login
-</a>
+  <a
+    href="/login"
+    className="rounded-lg bg-purple-600 px-4 py-2 hover:bg-purple-700"
+  >
+    Login
+  </a>
+</div>
       </div>
     </nav>
   );
