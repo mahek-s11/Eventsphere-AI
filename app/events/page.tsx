@@ -7,6 +7,9 @@ export default function EventsPage() {
   const [allEvents, setAllEvents] =
     useState(defaultEvents);
 
+  const [searchTerm, setSearchTerm] =
+    useState("");
+
   useEffect(() => {
     const customEvents = JSON.parse(
       localStorage.getItem("customEvents") || "[]"
@@ -18,14 +21,34 @@ export default function EventsPage() {
     ]);
   }, []);
 
+  const filteredEvents = allEvents.filter(
+    (event) =>
+      event.title
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      event.category
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase())
+  );
+
   return (
     <main className="min-h-screen bg-black p-8 text-white">
       <h1 className="mb-8 text-5xl font-bold">
         All Events
       </h1>
 
+      <input
+        type="text"
+        placeholder="🔍 Search events..."
+        value={searchTerm}
+        onChange={(e) =>
+          setSearchTerm(e.target.value)
+        }
+        className="mb-8 w-full rounded-lg bg-zinc-900 p-4 text-white outline-none"
+      />
+
       <div className="grid gap-6 md:grid-cols-3">
-        {allEvents.map((event) => (
+        {filteredEvents.map((event) => (
           <div
             key={event.id}
             className="rounded-2xl bg-zinc-900 p-6"

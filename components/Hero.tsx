@@ -13,12 +13,12 @@ export default function Hero() {
         and manage events effortlessly.
       </p>
 
-<a
-  href="/events"
-  className="rounded-xl bg-purple-600 px-8 py-4 text-lg font-semibold hover:bg-purple-700"
->
-  Explore Events
-</a>
+      <a
+        href="/events"
+        className="rounded-xl bg-purple-600 px-8 py-4 text-lg font-semibold hover:bg-purple-700"
+      >
+        Explore Events
+      </a>
     </section>
   );
 }
