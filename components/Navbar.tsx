@@ -21,6 +21,20 @@ export default function Navbar() {
 </a>
 
 <a
+  href="/ai-generator"
+  className="hover:text-purple-400"
+>
+  AI Generator
+</a>
+
+<a
+  href="/recommendations"
+  className="hover:text-purple-400"
+>
+  Recommendations
+</a>
+
+<a
   href="/login"
   className="rounded-lg bg-purple-600 px-4 py-2 hover:bg-purple-700"
 >
