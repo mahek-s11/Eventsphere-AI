@@ -27,14 +27,14 @@ export default function FeaturedEvents() {
 
       <div className="grid gap-6 md:grid-cols-3">
         {allEvents.map((event) => (
-          <EventCard
-            key={event.id}
-            id={event.id}
-            title={event.title}
-            category={event.category}
-            date={event.date}
-            location={event.location}
-          />
+ <EventCard
+  key={event.id}
+  id={event.id}
+  title={event.title}
+  category={event.category}
+  date={event.date}
+  location={event.location}
+/>
         ))}
       </div>
     </section>

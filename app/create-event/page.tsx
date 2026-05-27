@@ -125,9 +125,10 @@ const newEvent = {
   id: Date.now(),
   title: eventName,
   category,
-  date: formattedDate,
+  date,
   location,
   description,
+  image: "/images/default-event.jpg",
 };
 
     const existingEvents = JSON.parse(
