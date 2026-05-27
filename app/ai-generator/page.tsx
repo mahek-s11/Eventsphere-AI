@@ -7,6 +7,7 @@ export default function AIGeneratorPage() {
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
 
   return (
     <main className="min-h-screen bg-black p-8 text-white">
@@ -40,8 +41,12 @@ export default function AIGeneratorPage() {
         />
 
         <button
+          disabled={loading}
           onClick={async () => {
             try {
+              setLoading(true);
+              setDescription("");
+
               const response = await fetch(
                 "/api/generate-description",
                 {
@@ -64,31 +69,50 @@ export default function AIGeneratorPage() {
               setDescription(
                 "Failed to generate description."
               );
+            } finally {
+              setLoading(false);
             }
           }}
-          className="mb-6 w-full rounded-lg bg-purple-600 py-3 hover:bg-purple-700"
+          className="mb-6 w-full rounded-lg bg-purple-600 py-3 hover:bg-purple-700 disabled:cursor-not-allowed disabled:opacity-70"
         >
-          Generate Description
+          {loading
+            ? "Generating..."
+            : "Generate Description"}
         </button>
 
-<div className="rounded-lg bg-zinc-800 p-4">
-  <p className="whitespace-pre-wrap text-gray-300">
-    {description ||
-      "Generated description will appear here..."}
-  </p>
+        <div className="rounded-lg bg-zinc-800 p-4">
+          <div className="whitespace-pre-wrap text-gray-300">
+            {loading ? (
+              <div className="animate-pulse">
+                <p className="font-medium text-purple-400">
+                  ✨ AI is thinking...
+                </p>
 
-  {description && (
-    <button
-      onClick={() => {
-        navigator.clipboard.writeText(description);
-        alert("Description copied!");
-      }}
-      className="mt-4 rounded-lg bg-purple-600 px-4 py-2 hover:bg-purple-700"
-    >
-      Copy Description
-    </button>
-  )}
-</div>
+                <p className="mt-2 text-gray-400">
+                  Generating an engaging event
+                  description...
+                </p>
+              </div>
+            ) : (
+              description ||
+              "Generated description will appear here..."
+            )}
+          </div>
+
+          {description && !loading && (
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(
+                  description
+                );
+                alert("Description copied!");
+              }}
+              className="mt-4 rounded-lg bg-purple-600 px-4 py-2 hover:bg-purple-700"
+            >
+              Copy Description
+            </button>
+          )}
+        </div>
       </div>
     </main>
   );

@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function RecommendationsPage() {
   const [interests, setInterests] = useState("");
   const [recommendations, setRecommendations] = useState("");
+  const [loading, setLoading] = useState(false);
 
   return (
     <main className="min-h-screen bg-black p-8 text-white">
@@ -22,8 +23,12 @@ export default function RecommendationsPage() {
         />
 
         <button
+          disabled={loading}
           onClick={async () => {
             try {
+              setLoading(true);
+              setRecommendations("");
+
               const response = await fetch(
                 "/api/recommendations",
                 {
@@ -46,18 +51,48 @@ export default function RecommendationsPage() {
               setRecommendations(
                 "Failed to generate recommendations."
               );
+            } finally {
+              setLoading(false);
             }
           }}
-          className="mb-6 w-full rounded-lg bg-purple-600 py-3 hover:bg-purple-700"
+          className="mb-6 w-full rounded-lg bg-purple-600 py-3 hover:bg-purple-700 disabled:cursor-not-allowed disabled:opacity-70"
         >
-          Get Recommendations
+          {loading
+            ? "Generating..."
+            : "Get Recommendations"}
         </button>
 
         <div className="rounded-lg bg-zinc-800 p-4">
-          <p className="whitespace-pre-wrap text-gray-300">
-            {recommendations ||
-              "AI recommendations will appear here..."}
-          </p>
+          <div className="whitespace-pre-wrap text-gray-300">
+            {loading ? (
+              <div className="animate-pulse">
+                <p className="font-medium text-purple-400">
+                  ✨ AI is analyzing your interests...
+                </p>
+
+                <p className="mt-2 text-gray-400">
+                  Finding the best events for you...
+                </p>
+              </div>
+            ) : (
+              recommendations ||
+              "AI recommendations will appear here..."
+            )}
+          </div>
+
+          {recommendations && !loading && (
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(
+                  recommendations
+                );
+                alert("Recommendations copied!");
+              }}
+              className="mt-4 rounded-lg bg-purple-600 px-4 py-2 hover:bg-purple-700"
+            >
+              Copy Recommendations
+            </button>
+          )}
         </div>
       </div>
     </main>
